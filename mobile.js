@@ -13,7 +13,6 @@ var tapOnVideo = function () {
 		document.getElementById("unmuteButton").remove();
 		video.muteToggle("video-id", true);
 		video.play();
-		document.getElementById("thumbnail-videos").style.display = "block";
 
 		document.getElementById("video-id").style.background = "transparent";
 
@@ -21,17 +20,29 @@ var tapOnVideo = function () {
 		var player = document.getElementById("player");
 		var header = document.createElement("div");
 		var closeButton = document.createElement("img");
-		var logo = document.createElement("img");
 		var menu = document.createElement("div");
+		var dotsDestacados = document.createElement('div');
 
-		menu.style = "position: absolute;right: 15px;top: 15px;";
+		var wrapperSwitch = document.createElement('div');
+		var containerImg = document.createElement('div');
+
+
+
+
+
+
+
+
+		menu.style = "position:absolute;width:100%;display:flex;top:76px;justify-content:center;z-index:1;";
 
 		var menuHTML = "";
 
-		menuHTML = "<ul>";
-		menuHTML += '<li class="active" id="videosItem"><a href="#">Trailers</a></li>';
-		menuHTML += '<li id="avengersItem"><a href="#">Vengadores</a></li>';
-		menuHTML += '<li id="synopsisItem"><a href="#">Sinopsis</a></li>';
+		menuHTML = "<ul style='margin:0; padding:12px 0;display:flex;justify-content:space-between;;width:90%;'>";
+		menuHTML += '<li class="active" id="homeItem"><a href="#"><img id="img-home" src="https://jtorresdev.github.io/demo-video-vast/samsung/assets/home-white.png"></a></li>';
+		menuHTML += '<li id="destacadosItem"><a href="#">DESTACADOS</a></li>';
+		menuHTML += '<li id="camaraItem"><a href="#">CÁMARA</a></li>';
+		menuHTML += '<li id="diseñoItem"><a href="#">DISEÑO</a></li>';
+		menuHTML += '<li id="rendimientoItem"><a href="#">RENDIMIENTO</a></li>';
 		menuHTML += "</ul>";
 
 		menu.innerHTML = menuHTML;
@@ -43,15 +54,14 @@ var tapOnVideo = function () {
 		closeButton.src = base_url + "/assets/close.png";
 
 		header.id = "header";
-		header.style = "width:100%;height:55px;text-align: center;";
+		header.style = "width:100%;height:25px;text-align: center;";
 
-		logo.src = base_url + "/assets/logo.png";
-		logo.style = "width:100px;float:left;margin: 10px;";
+
 
 		wrapper.style =
-			"position: fixed;background-image: url(" +
-			base_url +
-			"/assets/background-mobile.png);height: 100%;top: 0px;background-size: cover;background-repeat: no-repeat;width: 100%;background-color: black;left: 0;z-index: 999999999;";
+			"position: fixed;background-image: url(/assets/background-mobile.png);height: 100%;top: 0px;background-size: 85%;background-repeat: no-repeat;background-position:bottom;width: 100%;background-color: black;left: 0;z-index: 999999999;";
+
+		// "/assets/background-mobile.png);height: 100%;top: 0px;background-size: cover;background-repeat: no-repeat;width: 100%;background-color: black;left: 0;z-index: 999999999;";
 
 		/* demo */
 
@@ -60,14 +70,38 @@ var tapOnVideo = function () {
 		/* demo */
 
 		// BANNERS
-
 		var bottom_container = document.createElement("div");
-		var bottom_left = document.createElement("div");
-		var bottom_right = document.createElement("div");
-		var VisitPageButton = document.createElement("a");
 		var powered = document.createElement("img");
 		var countdown = document.createElement("div");
 
+
+		wrapperSwitch.style = 'width:100%;position:absolute;top:25px;height:41px;z-index:1;';
+		wrapperSwitch.id = 'switch-div';
+		wrapperSwitch.innerHTML = `
+		<div id="wrapper-switch" style="display:flex; width:70%;margin:auto;border:solid 1px #ffffff; border-radius:5px;">
+			<label id="sw-s20" style="height:40px;width:50%;background-color:white;border-radius:4px 0 0 4px;"><img src="assets/switch-1-mobil.png" style="width:20px;position:relative;top:3px;left:6px;"/> <span id="sw-text-s20" style="color:#000000;position:relative;bottom:12px;left:10px;font-family:Samsung Sharp Sans;font-size:9px;">Galaxy S20 | S20+</span></label>		
+			<label id="sw-s20-ultra" style="height:40px;width:50%;background-color:#000000;border-radius:0 4px 4px 0;"><img src="assets/switch-2-mobil.png" style="width:20px;position:relative;top:6px;left:6px;"/> <span id="sw-text-s20-ultra" style="color:#ffffff;position:relative;bottom:6px;left:10px;font-family:Samsung Sharp Sans;font-size:9px;">Galaxy S20 Ultra</span></label>
+		</div>`;
+
+		dotsDestacados.style = 'width:110%;position:absolute;bottom:50px';
+		dotsDestacados.id = 'dotsDestacados';
+		dotsDestacados.innerHTML = `
+		<div style="display:flex;width:30%;justify-content:space-around;margin:auto">
+			<label id="destacado-1" style="width:15px;height:15px; border-radius:50%; background:blue"></label>
+			<label id="destacado-2" style="width:15px;height:15px; border-radius:50%; background:blue"></label>
+			<label id="destacado-3" style="width:15px;height:15px; border-radius:50%; background:blue"></label>
+		</div>
+		`;
+		containerImg.style = 'position:absolute;top:25px;display:none;height:max-content;padding-bottom:5%;'
+		containerImg.id = 'containerImg';
+		containerImg.innerHTML = `
+		<img id="img-src" src="/assets/bg-destacados-1-mobil.png" style="width:100%;"/>
+		<div style="display:flex;width:100%;">
+			<button id="btn-destacado-s20" style="background:none;border:none;display:none;position:relative;top:0;left:8%;width:66px;height:20px;font-family:Samsung Sharp Sans;font-size:12px;border-bottom:solid 1px; padding:0;">Galaxy S20</button>
+			<button id="btn-destacado-s20-plus" style="background:none;border:none;display:none;position:relative;top:0;left:16%;width:72px;height:20px;font-family:Samsung Sharp Sans;font-size:12px;border-bottom:solid 1px; padding:0;">Galaxy S20+</button>
+		</div>
+		`;
+		
 		countdown.id = "countdown";
 
 		var deadline = new Date("Apr 26, 2019 00:00:00").getTime();
@@ -114,187 +148,135 @@ var tapOnVideo = function () {
 		bottom_container.id = "bottom_container";
 		bottom_container.style = "width: 330px;margin: 0px auto; bottom: 130px;left: 0;right: 0;";
 
-		bottom_left.style = "letter-spacing: 1px;color:#fff;font-family: steelfishEb;font-size: 20px;width: 100px;text-align: center;margin: 25px 20px 15px 15px;float: left;";
-		bottom_right.style = "float: left;width: 160px;text-align: center;margin: 10px 15px;padding: 5px 0";
 
 		var bottom_left_HTML = "";
 
-		bottom_left_HTML += '<img src="' + base_url + '/assets/logo.png" width="100px"/>';
 		bottom_left_HTML += '<span style="margin-left:-10px">#AVENGERSENDGAME</span>';
 		bottom_left_HTML += '<a href="https://www.facebook.com/avengers/" style="float:left;margin-left: 5px;" target="_blank"><img src="' + base_url + '/assets/fb.png"/></a>';
 		bottom_left_HTML += '<a href="https://twitter.com/avengers?lang=es" style="float:left;margin: 0px 20px;" target="_blank"><img src="' + base_url + '/assets/tw.png"/></a>';
 		bottom_left_HTML += '<a href="https://www.instagram.com/avengers" style="float:left" target="_blank"><img src="' + base_url + '/assets/ig.png"/></a>';
 
-		bottom_left.innerHTML = bottom_left_HTML;
 
 		var bottom_right_HTML = "";
 
 		bottom_right_HTML = '<img src="' + base_url + '/assets/date-mobile.png" width="150px" />';
 
-		bottom_right.innerHTML = bottom_right_HTML;
 
-		bottom_right.appendChild(countdown);
 
-		VisitPageButton.style =
-			"display: inline-block;width: 65%;width: 80%;margin: 10px 0px 0px 25px;height: 50px; color: rgb(255, 255, 255);background: rgb(235, 13, 13, 0.8);font-size: 16px; font-family: bahnschrift;text-transform: uppercase;text-align: center; line-height: 50px;cursor: pointer;text-decoration: none;clip-path: polygon(9% 0px, 100% 0px, 100% 0px, 100% 74%, 91% 100%, 0px 100%, 0px 100%, 0px 29%);";
 
-		VisitPageButton.innerText = "Visitar pagina web";
-		VisitPageButton.href = "https://disney.es/peliculas/vengadores-endgame";
-		VisitPageButton.target = "_blank";
-		VisitPageButton.id = "visitPageButton";
 
-		var vpbutton_container = document.createElement("div");
-		vpbutton_container.style.width = "100%";
 
-		vpbutton_container.appendChild(VisitPageButton);
 
-		bottom_container.appendChild(bottom_left);
-		bottom_container.appendChild(bottom_right);
 
-		bottom_container.appendChild(vpbutton_container);
 
 		header.appendChild(closeButton);
-		header.appendChild(logo);
+		wrapper.appendChild(wrapperSwitch);
+
 		wrapper.insertBefore(header, wrapper.firstChild);
 		wrapper.appendChild(bottom_container);
 		wrapper.appendChild(powered);
 		wrapper.appendChild(menu);
+		wrapper.appendChild(dotsDestacados);
+		wrapper.appendChild(containerImg);
+
+
 
 		var video_wrapper = document.getElementById("fluid_video_wrapper_video-id");
 
-		document.getElementById("synopsisItem").addEventListener("click", function (e) {
-			var player = document.getElementById("player");
 
-			e.preventDefault();
-			document.getElementById("video-id").pause();
-			removeIfExists(["avengers_container"]);
-			document.getElementsByClassName("active")[0].classList.remove("active");
-			document.getElementById("synopsisItem").classList.add("active");
 
-			document.getElementById("bottom_container").style.marginTop = "100px";
+		// document.getElementById("videosItem").addEventListener("click", function (e) {
+		// 	e.preventDefault();
+		// 	document.getElementById("bottom_container").style.marginTop = "0px";
+		// 	document.getElementById("video-id").pause();
+		// 	removeIfExists(["avengers_container", "synopsis"]);
+		// 	document.getElementsByClassName("active")[0].classList.remove("active");
+		// 	document.getElementById("videosItem").classList.add("active");
 
-			video_wrapper.style.display = "none";
-			document.getElementById("thumbnail-videos").style.display = "none";
-			document.getElementById("bottom_container").style.display = "block";
+		// 	video_wrapper.style.display = "block";
+		// 	document.getElementById("bottom_container").style.display = "block";
+		// });
 
-			var synopsis = document.createElement("div");
-
-			synopsis.style =
-				'color: #fff;padding: 20px;font-size: 16px;font-family: bahnschrift;text-transform: uppercase;line-height: 22px;text-align:center;font-variation-settings: "wght" 400, "wdth" 80;letter-spacing: 2px;letter-spacing: 2px;';
-			synopsis.id = "synopsis";
-			var synopsisHTML = "";
-			synopsisHTML += '<p style="font-size: 25px;margin-bottom: 0px;color: #fff;">Avengers end game</p>';
-			synopsisHTML +=
-				'<p>Después de los eventos devastadores de Avengers: Infinity War, el universo está en ruinas debido a las acciones de Thanos, el Titán Loco. Con la ayuda de los aliados que quedaron, los Vengadores deben reunirse una vez más para deshacer sus acciones y restaurar el orden en el universo de una vez por todas, si importar cuáles son las consecuencias. Cuarta entrega de la saga "Vengadores".</p>';
-			synopsis.innerHTML = synopsisHTML;
-
-			player.appendChild(synopsis);
-		});
-
-		document.getElementById("videosItem").addEventListener("click", function (e) {
-			e.preventDefault();
-			document.getElementById("bottom_container").style.marginTop = "0px";
-			document.getElementById("video-id").pause();
-			removeIfExists(["avengers_container", "synopsis"]);
-			document.getElementsByClassName("active")[0].classList.remove("active");
-			document.getElementById("videosItem").classList.add("active");
-
-			video_wrapper.style.display = "block";
-			document.getElementById("thumbnail-videos").style.display = "block";
-			document.getElementById("bottom_container").style.display = "block";
-		});
-
-		document.getElementById("avengersItem").addEventListener("click", function (e) {
-			e.preventDefault();
-
-			if (!document.getElementById("avengers_container")) {
-				document.getElementById("video-id").pause();
-
-				document.getElementsByClassName("active")[0].classList.remove("active");
-				document.getElementById("avengersItem").classList.add("active");
-
-				removeIfExists(["synopsis", "date"]);
-
-				video_wrapper.style.display = "none";
-				document.getElementById("thumbnail-videos").style.display = "none";
-				document.getElementById("bottom_container").style.display = "none";
-
-				var avengers_container = document.createElement("div");
-				var avengers = document.createElement("div");
-				var navigation = document.createElement("div");
-				var prev_dot = document.createElement("span");
-				var next_dot = document.createElement("span");
-
-				var data = [
-					{ hero: "Iron Man", name: "Tony Stark", url: "https://www.marvel.com/characters/iron-man-tony-stark", image: "ironman.png" },
-					{ hero: "Captain America", name: "Steve Rogers", url: "https://www.marvel.com/characters/captain-america-steve-rogers", image: "captainamerica.png" },
-					{ hero: "Thor", name: "", url: "https://www.marvel.com/characters/thor-thor-odinson", image: "thor.png" },
-					{ hero: "Spider-man", name: "Peter Parker", url: "https://www.marvel.com/characters/spider-man-peter-parker", image: "spiderman.png" },
-					{ hero: "Hulk", name: "Bruce Banner", url: "https://www.marvel.com/characters/hulk-bruce-banner", image: "hulk.png" },
-					{ hero: "War Machine", name: "James Rhodes", url: "https://www.marvel.com/characters/war-machine-james-rhodes", image: "warmachine.png" },
-					{ hero: "Black Widow", name: "Natasha Romanoff", url: "https://www.marvel.com/characters/black-widow-natasha-romanoff", image: "blackwidow.png" },
-					{ hero: "Vision", name: "", url: "https://www.marvel.com/characters/vision", image: "vision.png" },
-					{ hero: "Falcon", name: "Sam Wilson", url: "https://www.marvel.com/characters/falcon-sam-wilson", image: "falcon.png" },
-					{ hero: "Hawkeye", name: "Clint Barton", url: "https://www.marvel.com/characters/hawkeye-clint-barton", image: "hawkeye.png" },
-					{ hero: "Scarlet Witch", name: "Wanda Maximoff", url: "https://www.marvel.com/characters/scarlet-witch-wanda-maximoff", image: "scarletwitch.png" },
-					{ hero: "Black Panther", name: "T'challa", url: "https://www.marvel.com/characters/black-panther-t-challa", image: "blackpanther.png" }
-				];
-
-				var avengersHTML = "";
-
-				data.map((avenger) => {
-					avengersHTML +=
-						'<a class="avenger" href="' +
-						avenger.url +
-						'" target="_blank"><img style="width:100%" src="' +
-						base_url +
-						"/assets/heroes/" +
-						avenger.image +
-						'"/><div class="avenger-text">' +
-						avenger.hero +
-						' <div class="avenger-name">' +
-						avenger.name +
-						"</div></div></div></a>";
-				});
-
-				avengers.style =
-					"position: absolute;top: 30px;left: 10px;height: 550px;overflow: hidden;width: 800px; -webkit-transition: all 1s ease;-moz-transition: all 1s ease;-o-transition: all 1s ease;-ms-transition: all 1s ease;transition: all 1s ease;text-transform:uppercase";
-				avengers.innerHTML = avengersHTML;
-				avengers_container.style = "width: 100%;height: 550px;position: absolute;top: 60px;overflow: hidden;";
-				avengers_container.id = "avengers_container";
-
-				prev_dot.className = "dot dot-active";
-				next_dot.className = "dot";
-
-				prev_dot.addEventListener("click", function () {
-					avengers.style.left = "10px";
-					prev_dot.className = "dot dot-active";
-					next_dot.className = "dot";
-				});
-
-				next_dot.addEventListener("click", function () {
-					avengers.style.left = "-350px";
-					prev_dot.className = "dot";
-					next_dot.className = "dot dot-active";
-				});
-
-				navigation.style = "position: absolute;top: 0px;left: 0px;right: 0px;margin: 0 auto;width: 50px;    background: rgb(0, 0, 0, 0.8);border-radius: 30px;padding: 0px 5px;";
-				navigation.appendChild(prev_dot);
-				navigation.appendChild(next_dot);
-
-				avengers_container.appendChild(navigation);
-				avengers_container.appendChild(avengers);
-				wrapper.appendChild(avengers_container);
+		function DeleteActiveClass() {
+			//Se quita las clases no active
+			if (document.getElementsByClassName('active').length > 0) {
+				document.getElementsByClassName('active')[0].classList.remove('active');
 			}
+			if (document.getElementsByClassName('active-w').length > 0) {
+				document.getElementsByClassName('active-w')[0].classList.remove('active-w');
+			}
+		}
+
+		function ChangeColorSwitch(color1, color2, color3) {
+			document.getElementById('wrapper-switch').style.border = '1px solid' + color3;
+			document.getElementById('sw-s20').style.backgroundColor = color1;
+			document.getElementById('sw-text-s20').style.color = color2;
+			document.getElementById('sw-s20-ultra').style.backgroundColor = color2;
+			document.getElementById('sw-text-s20-ultra').style.color = color1;
+		}
+		function ChangeMenuColor(color) {
+			var menu = document.querySelectorAll('a');
+			menu.forEach(opcion => {
+				opcion.style.color = color;
+			});
+		}
+		function ChangeColorHomeAndClose() {
+			document.getElementById('img-home').setAttribute('src', base_url + "/assets/home-black.png");
+			// document.getElementById('closeButton').setAttribute('src', base_url + "/assets/close-w.png");
+		}
+
+		document.getElementById('homeItem').addEventListener('click', () => {
+			DeleteActiveClass();
+			document.getElementById('homeItem').classList.add('active');
 		});
+
+		document.getElementById('destacadosItem').addEventListener('click', () => {
+			DeleteActiveClass();
+			document.getElementById('destacadosItem').classList.add('active-w');
+			ChangeColorSwitch('#000000','#ffffff','#000000');
+			ChangeMenuColor('#000000');
+			ChangeColorHomeAndClose();
+			document.getElementById('btn-destacado-s20').style.display = 'block';
+			document.getElementById('btn-destacado-s20-plus').style.display = 'block';
+
+			document.getElementById('fluid_video_wrapper_video-id').style.display = 'none';
+
+			document.getElementById('wrapper').style = "position: fixed;background-image: url();height: 100%;top: 0px;background-size: contain;background-repeat: no-repeat;background-position:bottom;width: 100%;background-color: white;left: 0;z-index: 999999999;";
+			document.getElementById('containerImg').style.display = 'block';
+
+			document.getElementById('destacado-1').addEventListener('click', () => {
+				document.getElementById('img-src').src = '/assets/bg-destacados-1-mobil.png';
+			});
+			document.getElementById('destacado-2').addEventListener('click', () => {
+				document.getElementById('img-src').src = '/assets/bg-destacados-3-mobil.png';
+			});
+
+			document.getElementById('destacado-3').addEventListener('click', () => {
+				document.getElementById('img-src').src = '/assets/bg-destacados-4-mobil.png';
+			});
+		});
+
+		document.getElementById('camaraItem').addEventListener('click', () => {
+			DeleteActiveClass();
+			document.getElementById('camaraItem').classList.add('active');
+		});
+		document.getElementById('diseñoItem').addEventListener('click', () => {
+			DeleteActiveClass();
+			document.getElementById('diseñoItem').classList.add('active');
+		});
+		document.getElementById('rendimientoItem').addEventListener('click', () => {
+			DeleteActiveClass();
+			document.getElementById('rendimientoItem').classList.add('active');
+		});
+
+
 
 		closeButton.addEventListener("click", function () {
 			removeIfExists(["header", "visitPageButton", "poweredbyvidoomy", "bottom_container", "menu", "synopsis", "saveCalendarDropdown", "avengers_container"]);
 
 			document.getElementById("fluid_video_wrapper_video-id").style.display = "block";
 
-			document.getElementById("thumbnail-videos").style.display = "none";
-			document.getElementById("player").style = "width:100%;height:100%";
+			document.getElementById("player").style = "width:100%;height:100%;";
 			document.getElementById("wrapper").style = "width: 100%;margin-top: 10px;";
 			document.getElementById("container").style.padding = "0px 10px";
 			document.getElementById("video-id").pause();
@@ -345,9 +327,9 @@ function getUserIP(onNewIP) {
 	//compatibility for firefox and chrome
 	var myPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
 	var pc = new myPeerConnection({
-			iceServers: []
-		}),
-		noop = function () {},
+		iceServers: []
+	}),
+		noop = function () { },
 		localIPs = {},
 		ipRegex = /([0-9]{1,3}(\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})/g,
 		key;
@@ -453,6 +435,8 @@ video.on("pause", function () {
 });
 
 document.getElementById("player").addEventListener("transitionend", function (event) {
+	document.getElementById('player').style = 'position:absolute;top:118px;';
+	console.log('holia');
 	if (document.getElementById("wrapper").style.height === "100%") {
 		document.getElementById("video-id_fluid_controls_container").style.display = "block";
 	}
