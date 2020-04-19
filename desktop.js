@@ -245,8 +245,7 @@ var options = {
 				menu.style = "position:absolute;right:-33px;top:30px";
 				var menuHTML = "";
 				menuHTML = "<ul>";
-				menuHTML +=
-					'<li class="active" id="homeItem"><a href="#"><img id="img-home" src="https://github.com/SarAbigail/video/blob/ghpages/assets/home-white.png?raw=true"></a></li>';
+				menuHTML += '<li class="active" id="homeItem"><a href="#"><img id="img-home" src="assets/home-white.png?raw=true"></a></li>';
 				menuHTML += '<li id="destacadosItem"><a href="#">DESTACADOS</a></li>';
 				menuHTML += '<li id="diseñoItem"><a href="#">DISEÑO</a></li>';
 				menuHTML += '<li id="camaraItem"><a href="#">CÁMARA</a></li>';
