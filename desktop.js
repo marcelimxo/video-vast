@@ -19,8 +19,7 @@ var newHeight = parseInt(newWidth.replace('px', '')) * 0.5625 + 'px';
 var marginTop = '80px';
 var marginLeft = '10px';
 
-var base_url = "https://jtorresdev.github.io/demo-video-vast/endgame";
-var imgurl = "https://github.com/SarAbigail/video/blob/master";
+var base_url = "https://github.com/marcelimxo/video-vast/blob/master";
 //var base_url = "./"
 
 var hidePlayerButtons = function () {
@@ -159,7 +158,7 @@ var options = {
 			if (firstPlay) {
 
 				var background = document.createElement('div');
-				var switchs = document.createElement('div');
+				var wrapperSwitch = document.createElement('div');
 				var close = document.createElement('img');
 				var menu = document.createElement('div');
 				var countdown = document.createElement('div')
@@ -170,9 +169,9 @@ var options = {
 				var dotsCamara = document.createElement('div');
 				var dotsRendimiento = document.createElement('div');
 				background.id = 'bg-samsung';
-				background.style = "background-image:url('https://github.com/SarAbigail/video/blob/ghpages/assets/background.png?raw=true');width:" + width + ';height:' + height + ';background-repeat: no-repeat;';
-				switchs.style = 'position:absolute;top:0;height:50px;width:326px;margin:10px; border:2px solid #ffffff; border-radius:10px;';
-				switchs.id = 'wrapper-switch';
+				background.style = "background-image:url('https://github.com/marcelimxo/video-vast/blob/master/assets/background.png?raw=true');width:" + width + ';height:' + height + ';background-repeat: no-repeat;';
+				wrapperSwitch.style = 'position:absolute;top:0;height:50px;width:326px;margin:10px; border:2px solid #ffffff; border-radius:10px;';
+				wrapperSwitch.id = 'wrapper-switch';
 				countdown.id = "countdown"
 				function n(n) {
 					return n > 9 ? "" + n : "0" + n;
@@ -197,40 +196,41 @@ var options = {
 						countdown.innerHTML = "EXPIRED";
 					}
 				}, 1000);
+
 				close.src = '' + base_url + '/assets/close.png';
 				close.style = 'position:absolute;top:10px;right:10px;cursor: pointer;';
 				close.id = 'closeButton';
 
-				switchs.innerHTML = `
-				<form style="display:flex;">	
-				<label id="sw-s20" style="height:50px;width:163px;background-color:white;border-radius:7px;"><img src="assets/swi-1.png" style="height:40px;width:32px;background-size:unset;position:relative;top:5px;left:4px;"/> <span id="sw-text-s20" style="color:#000000;position:relative;bottom:12px;">Galaxy S20 | S20+</span>
-				<input type="radio" id="s20" name="modelo" style="display:none;" checked>
-				</label>		
-				<label id="sw-s20-ultra" style="height:49px;width:162px;background-color:#000000;border-radius:9px;"><img src="assets/swi-2.png" style="height:40px;width:35px;background-size:unset;position:relative;top:5px;left:4px;"/> <span id="sw-text-s20-ultra" style="color:#ffffff;position:relative;bottom:12px;">Galaxy S20 Ultra</span>
-  				<input type="radio" id="sultra" name="modelo" style="display:none;">
-				</form>
-				</label>`;
+				wrapperSwitch.innerHTML = `
+				<div style="display:flex;">	
+					<label id="sw-s20" style="height:50px;width:163px;background-color:white;border-radius:7px;"><img src="assets/swi-1.png" style="height:40px;width:32px;background-size:unset;position:relative;top:5px;left:4px;"/> <span id="sw-text-s20" style="color:#000000;position:relative;bottom:12px;">Galaxy S20 | S20+</span>
+						<input type="radio" id="s20" name="modelo" style="display:none;" checked>
+					</label>		
+					<label id="sw-s20-ultra" style="height:49px;width:162px;background-color:#000000;border-radius:9px;"><img src="assets/swi-2.png" style="height:40px;width:35px;background-size:unset;position:relative;top:5px;left:4px;"/> <span id="sw-text-s20-ultra" style="color:#ffffff;position:relative;bottom:12px;">Galaxy S20 Ultra</span>
+						<input type="radio" id="sultra" name="modelo" style="display:none;">
+					</label>
+				</div>`;
 
 				btnDestacadoS20.id = 'btn-destacado-s20';
 				btnDestacadoS20.style = 'display:none; position: absolute;height: 24px;width: 83px;background: none;left: 422px;bottom: 134px;outline: none;border: none;cursor:pointer;';
+				
 				btnDestacadoS20Plus.id = 'btn-destacado-s20+';
-
 				btnDestacadoS20Plus.style = 'display:none;position: absolute;height: 24px;width: 100px;background: none;left:516px;bottom: 134px;outline: none;border: none;cursor:pointer;';
+				
 				dotsDestacados.style = "width:100%;height:50px;display:none;justify-content:center;position:relative;bottom:50px;align-items:center;";
 				dotsDestacados.id = 'dotsDestacados';
-
 				dotsDestacados.setAttribute('class', 'dots');
 				dotsDestacados.innerHTML = `
 				<div style="width:100px;display:flex;justify-content:space-around;">
-				<label style="background:grey;height:15px;width:15px;border-radius:50%;" id="first-destacados">
-				<input type="radio" name="slider-diseño"  style="display:none;"/>
-				</label>
-				<label style="background:#ced2d8;height:15px;width:15px;border-radius:50%;" id="second-destacados">
-				<input type="radio" name="slider-diseño"  style="display:none;"/>
-				</label>	
-				<label style="background:#ced2d8;height:15px;width:15px;border-radius:50%;" id="third-destacados">
-				<input type="radio" name="slider-diseño"  style="display:none;"/>
-				</label>				
+					<label style="background:grey;height:15px;width:15px;border-radius:50%;" id="first-destacados">
+						<input type="radio" name="slider-diseño"  style="display:none;"/>
+					</label>
+					<label style="background:#ced2d8;height:15px;width:15px;border-radius:50%;" id="second-destacados">
+						<input type="radio" name="slider-diseño"  style="display:none;"/>
+					</label>	
+					<label style="background:#ced2d8;height:15px;width:15px;border-radius:50%;" id="third-destacados">
+						<input type="radio" name="slider-diseño"  style="display:none;"/>
+					</label>				
 				</div>`;
 
 				dotsDiseño.style = "width:100%;height:50px;display:none;justify-content:center;position:relative;bottom:50px;align-items:center;";
@@ -238,15 +238,15 @@ var options = {
 				dotsDiseño.setAttribute('class', 'dots');
 				dotsDiseño.innerHTML = `
 				<div style="width:100px;display:flex;justify-content:space-around;">
-				<label style="background:grey;height:15px;width:15px;border-radius:50%;" id="first-diseño">
-				<input type="radio" name="slider-diseño"  style="display:none;"/>
-				</label>
-				<label style="background:#ced2d8;height:15px;width:15px;border-radius:50%;" id="second-diseño">
-				<input type="radio" name="slider-diseño"  style="display:none;"/>
-				</label>
-				<label style="background:#ced2d8;height:15px;width:15px;border-radius:50%;" id="third-diseño">
-				<input type="radio" name="slider-diseño"  style="display:none;"/>
-				</label>				
+					<label style="background:grey;height:15px;width:15px;border-radius:50%;" id="first-diseño">
+						<input type="radio" name="slider-diseño"  style="display:none;"/>
+					</label>
+					<label style="background:#ced2d8;height:15px;width:15px;border-radius:50%;" id="second-diseño">
+						<input type="radio" name="slider-diseño"  style="display:none;"/>
+					</label>
+					<label style="background:#ced2d8;height:15px;width:15px;border-radius:50%;" id="third-diseño">
+						<input type="radio" name="slider-diseño"  style="display:none;"/>
+					</label>				
 				</div>`;
 
 				dotsCamara.style = "width:100%;height:50px;display:none;justify-content:center;position:relative;bottom:50px;align-items:center;";
@@ -254,15 +254,15 @@ var options = {
 				dotsCamara.setAttribute('class', 'dots');
 				dotsCamara.innerHTML = `
 				<div style="width:100px;display:flex;justify-content:space-around;">
-				<label style="background:grey;height:15px;width:15px;border-radius:50%;" id="first-camara">
-				<input type="radio" name="slider-camara"  style="display:none;"/>
-				</label>
-				<label style="background:#ced2d8;height:15px;width:15px;border-radius:50%;" id="second-camara">
-				<input type="radio" name="slider-camara"  style="display:none;"/>
-				</label>
-				<label style="background:#ced2d8;height:15px;width:15px;border-radius:50%;" id="third-camara">
-				<input type="radio" name="slider-camara"  style="display:none;"/>
-				</label>				
+					<label style="background:grey;height:15px;width:15px;border-radius:50%;" id="first-camara">
+						<input type="radio" name="slider-camara"  style="display:none;"/>
+					</label>
+					<label style="background:#ced2d8;height:15px;width:15px;border-radius:50%;" id="second-camara">
+						<input type="radio" name="slider-camara"  style="display:none;"/>
+					</label>
+					<label style="background:#ced2d8;height:15px;width:15px;border-radius:50%;" id="third-camara">
+						<input type="radio" name="slider-camara"  style="display:none;"/>
+					</label>				
 				</div>`;
 
 				dotsRendimiento.style = "width:100%;height:50px;display:none;justify-content:center;position:relative;bottom:50px;align-items:center;";
@@ -270,33 +270,30 @@ var options = {
 				dotsRendimiento.setAttribute('class', 'dots');
 				dotsRendimiento.innerHTML = `
 				<div style="width:100px;display:flex;justify-content:space-around;">
-				<label style="background:grey;height:15px;width:15px;border-radius:50%;" id="first-r">
-				<input type="radio" name="slider-diseño"  style="display:none;"/>
-				</label>
-				<label style="background:#ced2d8;height:15px;width:15px;border-radius:50%;" id="second-r">
-				<input type="radio" name="slider-diseño"  style="display:none;"/>
-				</label>				
+					<label style="background:grey;height:15px;width:15px;border-radius:50%;" id="first-r">
+						<input type="radio" name="slider-diseño"  style="display:none;"/>
+					</label>
+					<label style="background:#ced2d8;height:15px;width:15px;border-radius:50%;" id="second-r">
+						<input type="radio" name="slider-diseño"  style="display:none;"/>
+					</label>				
 				</div>`;
 
 				menu.style = 'position:absolute;right:-33px;top:30px';
-
 				var menuHTML = '';
-
 				menuHTML = '<ul>';
 				menuHTML += '<li class="active" id="homeItem"><a href="#"><img id="img-home" src="https://github.com/SarAbigail/video/blob/ghpages/assets/home-white.png?raw=true"></a></li>';
 				menuHTML += '<li id="destacadosItem"><a href="#">DESTACADOS</a></li>';
 				menuHTML += '<li id="diseñoItem"><a href="#">DISEÑO</a></li>';
 				menuHTML += '<li id="camaraItem"><a href="#">CÁMARA</a></li>';
-				menuHTML += '<li id="rendimiento"><a href="#">RENDIMIENTO</a></li>';
+				menuHTML += '<li id="rendimientoItem"><a href="#">RENDIMIENTO</a></li>';
 				menuHTML += '</ul>';
-
 				menu.innerHTML = menuHTML;
 				menu.id = 'menu';
 
 				wrapper.appendChild(menu);
 				wrapper.appendChild(close);
 				wrapper.appendChild(background);
-				wrapper.appendChild(switchs);
+				wrapper.appendChild(wrapperSwitch);
 				wrapper.appendChild(btnDestacadoS20);
 				wrapper.appendChild(btnDestacadoS20Plus);
 				wrapper.appendChild(dotsDestacados);
@@ -445,9 +442,9 @@ document.getElementById('sw-s20-ultra').addEventListener('click', () => {
 });
 
 document.getElementById('homeItem').addEventListener('click', () => {
-	document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background.png?raw=true')";
+	document.getElementById('bg-samsung').style.backgroundImage = "url('" + base_url + "/assets/background.png')";
 	document.getElementById('fluid_video_wrapper_video-id').style.display = 'block';
-	document.getElementById('img-home').setAttribute('src', imgurl + "/assets/home-white.png?raw=true");
+	document.getElementById('img-home').setAttribute('src', base_url + "/assets/home-white.png?raw=true");
 	document.getElementById('closeButton').setAttribute('src', "/assets/close.png?raw=true");
 	HideDots();
 	ChangeMenuColor("#ffffff");
@@ -471,7 +468,7 @@ document.getElementById('homeItem').addEventListener('click', () => {
 });
 
 document.getElementById('destacadosItem').addEventListener('click', () => {
-	document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-destacados-s20-2-s20+.png?raw=true')";
+	document.getElementById('bg-samsung').style.backgroundImage = "url('" + base_url + "/assets/background-destacados-s20-2-s20+.png?raw=true')";
 	document.getElementById('video-id').pause();
 	document.getElementById('fluid_video_wrapper_video-id').style.display = 'none';
 
@@ -485,26 +482,26 @@ document.getElementById('destacadosItem').addEventListener('click', () => {
 	document.getElementById('btn-destacado-s20+').style.display = 'block';
 	//Se escuchan las imagenes
 	document.getElementById('btn-destacado-s20').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-destacados-s20-2-s20+.png?raw=true')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + base_url + "/assets/background-destacados-s20-2-s20+.png?raw=true')";
 	});
 	document.getElementById('btn-destacado-s20+').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-destacados-s20-1-s20+.png?raw=true')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + base_url + "/assets/background-destacados-s20-1-s20+.png?raw=true')";
 	});
 	//Se hace click en los dots
 	document.getElementById('first-destacados').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-destacados-s20-2-s20+.png?raw=true')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + base_url + "/assets/background-destacados-s20-2-s20+.png?raw=true')";
 		document.getElementById('first-destacados').style.backgroundColor = "grey";
 		document.getElementById('second-destacados').style.backgroundColor = "#ced2d8";
 		document.getElementById('third-destacados').style.backgroundColor = "#ced2d8";
 	});
 	document.getElementById('second-destacados').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-destacados-s20-2.png?raw=true')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + base_url + "/assets/background-destacados-s20-2.png?raw=true')";
 		document.getElementById('first-destacados').style.backgroundColor = "#ced2d8";
 		document.getElementById('second-destacados').style.backgroundColor = "grey";
 		document.getElementById('third-destacados').style.backgroundColor = "#ced2d8";
 	});
 	document.getElementById('third-destacados').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-destacados-s20-3.png?raw=true')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + base_url + "/assets/background-destacados-s20-3.png?raw=true')";
 		document.getElementById('first-destacados').style.backgroundColor = "#ced2d8";
 		document.getElementById('second-destacados').style.backgroundColor = "#ced2d8";
 		document.getElementById('third-destacados').style.backgroundColor = "grey";
@@ -514,7 +511,7 @@ document.getElementById('destacadosItem').addEventListener('click', () => {
 	//Se le coloca clase active
 	document.getElementById('destacadosItem').setAttribute('class', 'active-w');
 	ChangeMenuColor('#000000');
-	document.getElementById('img-home').setAttribute('src', imgurl + "/assets/home-black.png?raw=true");
+	document.getElementById('img-home').setAttribute('src', base_url + "/assets/home-black.png?raw=true");
 	document.getElementById('closeButton').setAttribute('src', "/assets/close-w.png?raw=true");
 });
 
@@ -527,30 +524,30 @@ document.getElementById('diseñoItem').addEventListener('click', () => {
 	//Se le coloca clase active
 	document.getElementById('diseñoItem').setAttribute('class', 'active-w');
 	//la imagen de fondo es diferente
-	document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-diseño-1.png?raw=true')";
+	document.getElementById('bg-samsung').style.backgroundImage = "url('" + base_url + "/assets/background-diseño-1.png?raw=true')";
 	//pausa el video
 	document.getElementById('video-id').pause();
 	//oculta el reproductor del video
 	document.getElementById('fluid_video_wrapper_video-id').style.display = 'none';
 	//el home icon se vuelve negro
-	document.getElementById('img-home').setAttribute('src', imgurl + "/assets/home-black.png?raw=true");
-	document.getElementById('closeButton').setAttribute('src', imgurl + "/assets/close-w.png?raw=true");
+	document.getElementById('img-home').setAttribute('src', base_url + "/assets/home-black.png?raw=true");
+	document.getElementById('closeButton').setAttribute('src', base_url + "/assets/close-w.png?raw=true");
 	ChangeMenuColor('#000000');
 	//se pone una escucha en los dots
 	document.getElementById('first-diseño').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-diseño-1.png?raw=true')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + base_url + "/assets/background-diseño-1.png?raw=true')";
 		document.getElementById('first-diseño').style.backgroundColor = 'grey';
 		document.getElementById('second-diseño').style.backgroundColor = '#ced2d8';
 		document.getElementById('third-diseño').style.backgroundColor = '#ced2d8';
 	});
 	document.getElementById('second-diseño').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-diseño-2.png?raw=true')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + base_url + "/assets/background-diseño-2.png?raw=true')";
 		document.getElementById('first-diseño').style.backgroundColor = '#ced2d8';
 		document.getElementById('second-diseño').style.backgroundColor = 'grey';
 		document.getElementById('third-diseño').style.backgroundColor = '#ced2d8';
 	});
 	document.getElementById('third-diseño').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-dise%C3%B1o-3.png?raw=true')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + base_url + "/assets/background-dise%C3%B1o-3.png?raw=true')";
 		document.getElementById('first-diseño').style.backgroundColor = '#ced2d8';
 		document.getElementById('second-diseño').style.backgroundColor = '#ced2d8';
 		document.getElementById('third-diseño').style.backgroundColor = 'grey';
@@ -566,27 +563,27 @@ document.getElementById('camaraItem').addEventListener('click', () => {
 	DeleteActiveClass();
 	//Se le coloca clase active
 	document.getElementById('camaraItem').setAttribute('class', 'active-w');
-	document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-camara-1.png?raw=true')";
+	document.getElementById('bg-samsung').style.backgroundImage = "url('" + base_url + "/assets/background-camara-1.png?raw=true')";
 	document.getElementById('video-id').pause();
 	document.getElementById('fluid_video_wrapper_video-id').style.display = 'none';
-	document.getElementById('img-home').setAttribute('src', imgurl + "/assets/home-black.png?raw=true");
-	document.getElementById('closeButton').setAttribute('src', imgurl + "/assets/close-w.png?raw=true");
+	document.getElementById('img-home').setAttribute('src', base_url + "/assets/home-black.png?raw=true");
+	document.getElementById('closeButton').setAttribute('src', base_url + "/assets/close-w.png?raw=true");
 	ChangeMenuColor('#000000');
 	//Se escucha los dots
 	document.getElementById('first-camara').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-camara-1.png?raw=true')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + base_url + "/assets/background-camara-1.png?raw=true')";
 		document.getElementById('first-camara').style.backgroundColor = 'grey';
 		document.getElementById('second-camara').style.backgroundColor = '#ced2d8';
 		document.getElementById('third-camara').style.backgroundColor = '#ced2d8';
 	});
 	document.getElementById('second-camara').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-camara-2.png?raw=true')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + base_url + "/assets/background-camara-2.png?raw=true')";
 		document.getElementById('first-camara').style.backgroundColor = '#ced2d8';
 		document.getElementById('second-camara').style.backgroundColor = 'grey';
 		document.getElementById('third-camara').style.backgroundColor = '#ced2d8';
 	});
 	document.getElementById('third-camara').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-camara-3.png?raw=true')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + base_url + "/assets/background-camara-3.png?raw=true')";
 		document.getElementById('first-camara').style.backgroundColor = '#ced2d8';
 		document.getElementById('second-camara').style.backgroundColor = '#ced2d8';
 		document.getElementById('third-camara').style.backgroundColor = 'grey';
@@ -594,30 +591,30 @@ document.getElementById('camaraItem').addEventListener('click', () => {
 	ChangeColorSwitch();
 });
 
-document.getElementById('rendimiento').addEventListener('click', () => {
+document.getElementById('rendimientoItem').addEventListener('click', () => {
 	//Se ocultan los demas dots
 	HideDots();
 	document.getElementById('dotsRendimiento').style.display = "flex";
 	//Se quita las clases no active
 	DeleteActiveClass();
 	//Se le coloca clase active
-	document.getElementById('rendimiento').setAttribute('class', 'active-w');
+	document.getElementById('rendimientoItem').setAttribute('class', 'active-w');
 	//Se escucha los dots
 	document.getElementById('first-r').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-rendimiento-bateria.png?raw=true')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + base_url + "/assets/background-rendimiento-bateria.png?raw=true')";
 		document.getElementById('first-r').style.backgroundColor = 'grey';
 		document.getElementById('second-r').style.backgroundColor = '#ced2d8';
 	});
 	document.getElementById('second-r').addEventListener('click', () => {
-		document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-rendimiento-memoria.png?raw=true')";
+		document.getElementById('bg-samsung').style.backgroundImage = "url('" + base_url + "/assets/background-rendimiento-memoria.png?raw=true')";
 		document.getElementById('first-r').style.backgroundColor = '#ced2d8';
 		document.getElementById('second-r').style.backgroundColor = 'grey';
 	});
-	document.getElementById('bg-samsung').style.backgroundImage = "url('" + imgurl + "/assets/background-rendimiento-bateria.png?raw=true')";
+	document.getElementById('bg-samsung').style.backgroundImage = "url('" + base_url + "/assets/background-rendimiento-bateria.png?raw=true')";
 	document.getElementById('video-id').pause();
 	document.getElementById('fluid_video_wrapper_video-id').style.display = 'none';
-	document.getElementById('img-home').setAttribute('src', imgurl + "/assets/home-black.png?raw=true");
-	document.getElementById('closeButton').setAttribute('src', imgurl + "/assets/close-w.png?raw=true");
+	document.getElementById('img-home').setAttribute('src', base_url + "/assets/home-black.png?raw=true");
+	document.getElementById('closeButton').setAttribute('src', base_url + "/assets/close-w.png?raw=true");
 	ChangeMenuColor('#000000');
 	ChangeColorSwitch();
 });
